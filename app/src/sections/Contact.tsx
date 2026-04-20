@@ -173,7 +173,8 @@ export default function Contact() {
                 color: 'var(--color-dark-void)',
               }}
             >
-              Rua Luciana de Abreu, 471 — Moinhos de Vento, Porto Alegre/RS
+              Rua Luciana de Abreu, 471<br/>
+              Moinhos de Vento — Porto Alegre/RS
             </span>
           </div>
         </div>

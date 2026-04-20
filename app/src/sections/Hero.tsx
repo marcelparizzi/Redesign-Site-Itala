@@ -159,24 +159,29 @@ export default function Hero() {
       {/* Logo — positioned in upper area against the SKY for visibility */}
       <div
         ref={logoRef}
+        className="hero-logo-container"
         style={{
           position: 'absolute',
-          top: 'clamp(80px, 15vh, 140px)',
+          top: '12vh',
           left: '50%',
           transform: 'translateX(-50%)',
           zIndex: 3,
           opacity: 0,
           pointerEvents: showLogo ? 'auto' : 'none',
           textAlign: 'center',
+          width: '85%',
+          maxWidth: 600,
         }}
       >
         <img
           src="/images/logo-itala.png"
           alt="Ítala Chinazzo — Psicologia e Psicanálise"
+          className="hero-logo"
           style={{
             width: '100%',
-            maxWidth: 600,
             height: 'auto',
+            display: 'block',
+            margin: '0 auto',
             filter: 'drop-shadow(0 2px 20px rgba(26, 26, 26, 0.25))',
           }}
         />

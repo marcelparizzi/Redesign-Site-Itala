@@ -231,3 +231,31 @@ html.lenis, html.lenis body {
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
 }
+
+/* ========================================
+   LOGO HERO — Tamanho responsivo
+   ======================================== */
+
+/* Desktop */
+.hero-logo-container {
+  width: 60% !important;
+  max-width: 500px !important;
+}
+
+/* Tablet (<=768px) */
+@media (max-width: 768px) {
+  .hero-logo-container {
+    width: 60% !important;
+    max-width: 520px !important;
+    top: 10vh !important;
+  }
+}
+
+/* Mobile (<=480px) */
+@media (max-width: 480px) {
+  .hero-logo-container {
+    width: 75% !important;
+    max-width: none !important;  /* sem limite! */
+    top: 17vh !important;
+  }
+}

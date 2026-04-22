@@ -94,6 +94,7 @@ export default function About() {
 
         {/* Right Column - Bio */}
         <div className="about-right">
+          {/* Section Label */}
           <p
             style={{
               fontFamily: 'var(--font-body)',
@@ -108,6 +109,7 @@ export default function About() {
             A PROFISSIONAL
           </p>
 
+          {/* Name */}
           <h2
             style={{
               fontFamily: 'var(--font-display)',
@@ -122,6 +124,7 @@ export default function About() {
             Dra. Ítala Chinazzo
           </h2>
 
+          {/* CRP */}
           <p
             style={{
               fontFamily: 'var(--font-body)',
@@ -135,45 +138,126 @@ export default function About() {
             Psicóloga — CRP 07/21722
           </p>
 
+          {/* Bio Content */}
           <div
             style={{
-              marginTop: 32,
-              maxWidth: 520,
+              marginTop: 40,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 32,
             }}
           >
-            <p
-              style={{
-                fontFamily: 'var(--font-body)',
-                fontSize: 'clamp(0.875rem, 1vw, 1rem)',
-                fontWeight: 400,
-                lineHeight: 1.65,
-                letterSpacing: '0.01em',
-                color: 'rgba(245, 240, 230, 0.85)',
-                marginBottom: 20,
-              }}
-            >
-              Psicóloga graduada em 2012, com formação em psicanálise pelo Centro de Estudos
-              Psicanalíticos de Porto Alegre (CEPdePA). Doutora em Psiquiatria e Ciência do
-              Comportamento pela UFRGS e mestre em Psicologia pela PUCRS. Pesquisadora colaboradora
-              do Hospital de Clínicas de Porto Alegre (HCPA) e membro do Serviço de Psicanálise da
-              Infância e Adolescência do CEPdePA.
-            </p>
-            <p
-              style={{
-                fontFamily: 'var(--font-body)',
-                fontSize: 'clamp(0.875rem, 1vw, 1rem)',
-                fontWeight: 400,
-                lineHeight: 1.65,
-                letterSpacing: '0.01em',
-                color: 'rgba(245, 240, 230, 0.85)',
-              }}
-            >
-              Atende crianças, adolescentes e adultos em psicoterapia psicanalítica individual,
-              oferecendo um espaço de escuta clínica fundamentado na tradição freudiana
-              e contemporânea.<br/>
-              Conta com 14 anos de experiência clínica com crianças e doutorado em
-              psiquiatria e ciência do comportamento, com enface na dicidencia de genero.
-            </p>
+            {/* Formation */}
+            <div>
+              <p
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.7rem',
+                  fontWeight: 500,
+                  letterSpacing: '0.1em',
+                  color: 'var(--color-golden-oak)',
+                  textTransform: 'uppercase',
+                  marginBottom: 10,
+                }}
+              >
+                Formação
+              </p>
+              <p
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: 'clamp(0.875rem, 1vw, 1rem)',
+                  fontWeight: 400,
+                  lineHeight: 1.7,
+                  color: 'rgba(245, 240, 230, 0.85)',
+                }}
+              >
+                Sou psicóloga graduada desde 2012, com formação em Psicanálise pelo Centro de Estudos Psicanalíticos de Porto Alegre (CEPdePA). Possuo mestrado em Psicologia pela PUCRS e doutorado em Psiquiatria e Ciências do Comportamento pela UFRGS.
+              </p>
+            </div>
+
+            {/* Clinical Practice */}
+            <div>
+              <p
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.7rem',
+                  fontWeight: 500,
+                  letterSpacing: '0.1em',
+                  color: 'var(--color-golden-oak)',
+                  textTransform: 'uppercase',
+                  marginBottom: 10,
+                }}
+              >
+                Atuação Clínica
+              </p>
+              <p
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: 'clamp(0.875rem, 1vw, 1rem)',
+                  fontWeight: 400,
+                  lineHeight: 1.7,
+                  color: 'rgba(245, 240, 230, 0.85)',
+                }}
+              >
+                Atuo com psicoterapia psicanalítica individual para crianças, adolescentes e adultos, oferecendo um espaço de escuta qualificada, pautado na tradição freudiana e nas contribuições contemporâneas da psicanálise. Meu trabalho é orientado pelo compromisso ético e pelo respeito à singularidade de cada sujeito.
+              </p>
+            </div>
+
+            {/* Supervision */}
+            <div>
+              <p
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.7rem',
+                  fontWeight: 500,
+                  letterSpacing: '0.1em',
+                  color: 'var(--color-golden-oak)',
+                  textTransform: 'uppercase',
+                  marginBottom: 10,
+                }}
+              >
+                Supervisão
+              </p>
+              <p
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: 'clamp(0.875rem, 1vw, 1rem)',
+                  fontWeight: 400,
+                  lineHeight: 1.7,
+                  color: 'rgba(245, 240, 230, 0.85)',
+                }}
+              >
+                Além da prática clínica, ofereço supervisão para estudantes e profissionais da área, contribuindo para a formação e o aprimoramento do exercício clínico.
+              </p>
+            </div>
+
+            {/* Experience */}
+            <div>
+              <p
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.7rem',
+                  fontWeight: 500,
+                  letterSpacing: '0.1em',
+                  color: 'var(--color-golden-oak)',
+                  textTransform: 'uppercase',
+                  marginBottom: 10,
+                }}
+              >
+                Experiência
+              </p>
+              <p
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: 'clamp(0.875rem, 1vw, 1rem)',
+                  fontWeight: 400,
+                  lineHeight: 1.7,
+                  color: 'rgba(245, 240, 230, 0.85)',
+                }}
+              >
+                Tenho ampla experiência em consultório particular, bem como atuação em contexto escolar, desenvolvendo trabalhos com estudantes, formação de professores e orientação a famílias sobre desenvolvimento e comportamento infantil. Atuei também como pesquisadora colaboradora no Hospital de Clínicas de Porto Alegre (HCPA), com foco em estudos sobre dissidência de gênero, e integrei o Serviço de Psicanálise da Infância e Adolescência do CEPdePA.
+              </p>
+            </div>
           </div>
         </div>
       </div>

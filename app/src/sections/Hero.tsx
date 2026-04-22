@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Play } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -11,41 +11,56 @@ export default function Hero() {
   const logoRef = useRef<HTMLDivElement>(null);
   const hasPlayedRef = useRef(false);
   const [showLogo, setShowLogo] = useState(false);
+  const [needsInteraction, setNeedsInteraction] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Tempo para vídeo de 12s — logo aparece aos 9,0s quando a borboleta já quase desapareceu
-  const LOGO_APPEAR_TIME = 9000; // ms — borboleta praticamente fora, só permanece céu e campo
+  // Tempo para vídeo de 12s — logo aparece aos 6,0s quando a borboleta já quase desapareceu
+  const LOGO_APPEAR_TIME = 6000; // ms — borboleta praticamente fora, só permanece céu e campo
 
   const resetAndPlay = useCallback(() => {
     const video = videoRef.current;
     const logo = logoRef.current;
     if (!video) return;
 
-    // Resetar logo
+    // Resetar logo e estado de interação para garantir que o vídeo possa ser reproduzido novamente sem problemas
     setShowLogo(false);
+    setNeedsInteraction(false);
     if (logo) {
       gsap.set(logo, { opacity: 0, scale: 0.85 });
     }
 
-    // Limpar qualquer timeout pendente
+    // Limpar qualquer timeout pendente para evitar múltiplos disparos
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
     }
 
     // Resetar e reproduzir o vídeo
     video.currentTime = 0;
-    video.play().catch(() => {});
+    video.play()
+      .then(() => {
+        setNeedsInteraction(false);
+      })
+      .catch(() => {
+        setNeedsInteraction(true);
+        if (timeoutRef.current) {
+          clearTimeout(timeoutRef.current);
+          timeoutRef.current = null;
+        }
+      });
 
-    // Agendar aparição do logo — quando a borboleta já voou e o céu está limpo
     timeoutRef.current = setTimeout(() => {
-      setShowLogo(true);
-      if (logo) {
-        gsap.to(logo, {
-          opacity: 1,
-          scale: 1,
-          duration: 2.5,
-          ease: 'power2.out',
-        });
+      const v = videoRef.current;
+      if (v && !v.paused) {
+        setShowLogo(true);
+        if (logo) {
+          gsap.to(logo, {
+            opacity: 1,
+            scale: 1,
+            duration: 5.5,
+            ease: 'power2.out',
+          });
+        }
       }
     }, LOGO_APPEAR_TIME);
   }, []);
@@ -55,23 +70,31 @@ export default function Hero() {
     const section = sectionRef.current;
     if (!video || !section) return;
 
-    // Evitar loop
+    // Evitar loop infinito: quando o vídeo termina, pausá-lo e posicioná-lo no final para que o frame final permaneça visível
     video.addEventListener('ended', () => {
       video.pause();
       video.currentTime = video.duration - 0.1;
     });
 
-    // Reprodução inicial
+    // Se o vídeo for pausado por qualquer motivo, limpar timeout e esconder logo
+    const handlePause = () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+      }
+    };
+    video.addEventListener('pause', handlePause);
+
+    // Quando o vídeo estiver pronto para tocar, garantir que ele seja reproduzido se ainda não tiver sido
     const handleCanPlay = () => {
       if (!hasPlayedRef.current) {
         hasPlayedRef.current = true;
         resetAndPlay();
       }
     };
-
     video.addEventListener('canplaythrough', handleCanPlay);
 
-    // ScrollTrigger: reproduzir novamente ao voltar para o hero
+    // Configurar ScrollTrigger para reiniciar o vídeo quando o usuário rolar de volta para a seção
     ScrollTrigger.create({
       trigger: section,
       start: 'top 80%',
@@ -89,6 +112,7 @@ export default function Hero() {
 
     return () => {
       video.removeEventListener('canplaythrough', handleCanPlay);
+      video.removeEventListener('pause', handlePause);
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
       ScrollTrigger.getAll().forEach((t) => {
         if (t.trigger === section) t.kill();
@@ -108,7 +132,7 @@ export default function Hero() {
         backgroundColor: 'var(--color-deep-umber)',
       }}
     >
-      {/* Video Background */}
+      {/* Vídeo de fundo */}
       <video
         ref={videoRef}
         style={{
@@ -123,12 +147,13 @@ export default function Hero() {
         autoPlay
         muted
         playsInline
+        webkit-playsinline="true"
         preload="auto"
       >
         <source src="/videos/hero-butterfly.mp4" type="video/mp4" />
       </video>
 
-      {/* Subtle top gradient for logo readability against sky */}
+      {/* Gradientes para melhorar legibilidade do texto sobre o vídeo */}
       <div
         style={{
           position: 'absolute',
@@ -142,7 +167,7 @@ export default function Hero() {
         }}
       />
 
-      {/* Bottom gradient for quote readability */}
+      {/* Gradiente inferior para criar um fade-out suave do vídeo e melhorar a legibilidade do texto próximo à parte inferior */}
       <div
         style={{
           position: 'absolute',
@@ -156,7 +181,63 @@ export default function Hero() {
         }}
       />
 
-      {/* Logo — positioned in upper area against the SKY for visibility */}
+      {/* Overlay de interação para dispositivos que exigem toque para reproduzir vídeos */}
+      {needsInteraction && (
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 10,
+            cursor: 'pointer',
+          }}
+          onClick={() => {
+            const video = videoRef.current;
+            if (!video) return;
+            video.play()
+              .then(() => {
+                setNeedsInteraction(false);
+                const logo = logoRef.current;
+                if (timeoutRef.current) clearTimeout(timeoutRef.current);
+                timeoutRef.current = setTimeout(() => {
+                  const v = videoRef.current;
+                  if (v && !v.paused) {
+                    setShowLogo(true);
+                    if (logo) {
+                      gsap.to(logo, {
+                        opacity: 1,
+                        scale: 1,
+                        duration: 5.5,
+                        ease: 'power2.out',
+                      });
+                    }
+                  }
+                }, LOGO_APPEAR_TIME);
+              })
+              .catch(() => {});
+          }}
+        >
+          <div
+            style={{
+              width: 72,
+              height: 72,
+              borderRadius: '50%',
+              backgroundColor: 'rgba(245, 240, 230, 0.15)',
+              backdropFilter: 'blur(8px)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              border: '1px solid rgba(245, 240, 230, 0.3)',
+            }}
+          >
+            <Play size={32} style={{ color: 'var(--color-warm-cream)', marginLeft: 4 }} />
+          </div>
+        </div>
+      )}
+
+      {/* Logo que aparece após um tempo do vídeo começar a tocar */}
       <div
         ref={logoRef}
         className="hero-logo-container"
@@ -187,7 +268,7 @@ export default function Hero() {
         />
       </div>
 
-      {/* Quote — bottom left over the field */}
+      {/* Texto sobreposto ao vídeo, posicionado próximo à parte inferior para aproveitar o gradiente de fade-out e garantir boa legibilidade */}
       <div
         style={{
           position: 'absolute',
@@ -227,7 +308,7 @@ export default function Hero() {
         </p>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Indicador de scroll para incentivar o usuário a explorar mais o site, posicionado no centro inferior da tela */}
       <div className="scroll-indicator">
         <ChevronDown
           size={24}

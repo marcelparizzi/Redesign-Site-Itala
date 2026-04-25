@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin, MessageCircle } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,7 +13,6 @@ export default function Contact() {
     if (!section) return;
 
     const content = section.querySelector('.contact-content');
-
     if (content) {
       gsap.fromTo(
         content,
@@ -45,19 +44,19 @@ export default function Contact() {
       id="contato"
       style={{
         width: '100%',
-        backgroundColor: 'var(--color-warm-cream)',
+        backgroundColor: 'var(--color-pale-sand)',
         padding: 'clamp(80px, 12vh, 160px) clamp(24px, 5vw, 80px)',
       }}
     >
       <div
         className="contact-content"
         style={{
-          maxWidth: 800,
+          maxWidth: 900,
           margin: '0 auto',
           textAlign: 'center',
         }}
       >
-        {/* Section Label */}
+        {/* Label */}
         <p
           style={{
             fontFamily: 'var(--font-body)',
@@ -72,39 +71,84 @@ export default function Contact() {
           CONTATO
         </p>
 
-        {/* Headline */}
+        {/* Conversion headline */}
         <h2
           style={{
             fontFamily: 'var(--font-display)',
-            fontSize: 'clamp(1.5rem, 4vw, 2.75rem)',
+            fontSize: 'clamp(1.75rem, 5vw, 3.5rem)',
             fontWeight: 400,
-            lineHeight: 1.2,
-            letterSpacing: '-0.01em',
+            lineHeight: 1.15,
+            letterSpacing: '-0.02em',
             color: 'var(--color-dark-void)',
-            marginTop: 32,
+            marginTop: 24,
+            maxWidth: 700,
+            marginLeft: 'auto',
+            marginRight: 'auto',
           }}
         >
-          Inicie um processo
+          O primeiro passo é sempre o mais importante
         </h2>
 
-        {/* Body */}
         <p
           style={{
             fontFamily: 'var(--font-body)',
-            fontSize: 'clamp(0.875rem, 1vw, 1rem)',
+            fontSize: 'clamp(1rem, 1.3vw, 1.15rem)',
             fontWeight: 400,
             lineHeight: 1.65,
-            letterSpacing: '0.01em',
             color: 'var(--color-earth-clay)',
-            marginTop: 24,
+            marginTop: 20,
             maxWidth: 560,
             marginLeft: 'auto',
             marginRight: 'auto',
           }}
         >
-          O primeiro passo é entrar em contato. Podemos agendar uma conversa inicial para avaliar
-          se a psicanálise é indicada para você neste momento.
+          Entre em contato e vamos conversar. Respondo em até 24 horas.
         </p>
+
+        {/* Primary CTA — WhatsApp */}
+        <div style={{ marginTop: 40 }}>
+          <a
+            href="https://wa.me/5551999223888"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 12,
+              backgroundColor: '#25D366',
+              color: '#FFFFFF',
+              padding: '18px 40px',
+              borderRadius: 4,
+              fontFamily: 'var(--font-body)',
+              fontSize: '1rem',
+              fontWeight: 500,
+              letterSpacing: '0.02em',
+              textDecoration: 'none',
+              transition: 'background-color 0.3s ease, transform 0.2s ease',
+              boxShadow: '0 4px 20px rgba(37, 211, 102, 0.3)',
+            }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)';
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
+            }}
+          >
+            <MessageCircle size={22} fill="white" />
+            Conversar pelo WhatsApp
+          </a>
+        </div>
+
+        {/* Divider */}
+        <div
+          style={{
+            width: 60,
+            height: 1,
+            backgroundColor: 'var(--color-golden-oak)',
+            opacity: 0.4,
+            margin: '48px auto',
+          }}
+        />
 
         {/* Contact Info */}
         <div
@@ -113,23 +157,15 @@ export default function Contact() {
             flexDirection: 'row',
             justifyContent: 'center',
             gap: 48,
-            marginTop: 48,
             flexWrap: 'wrap',
           }}
         >
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 12,
-            }}
-          >
-            <Phone size={20} style={{ color: 'var(--color-golden-oak)', flexShrink: 0 }} />
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <Phone size={18} style={{ color: 'var(--color-golden-oak)', flexShrink: 0 }} />
             <span
               style={{
                 fontFamily: 'var(--font-body)',
-                fontSize: 'clamp(0.875rem, 1vw, 1rem)',
-                fontWeight: 400,
+                fontSize: '0.9rem',
                 color: 'var(--color-dark-void)',
               }}
             >
@@ -137,19 +173,12 @@ export default function Contact() {
             </span>
           </div>
 
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 12,
-            }}
-          >
-            <Mail size={20} style={{ color: 'var(--color-golden-oak)', flexShrink: 0 }} />
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <Mail size={18} style={{ color: 'var(--color-golden-oak)', flexShrink: 0 }} />
             <span
               style={{
                 fontFamily: 'var(--font-body)',
-                fontSize: 'clamp(0.875rem, 1vw, 1rem)',
-                fontWeight: 400,
+                fontSize: '0.9rem',
                 color: 'var(--color-dark-void)',
               }}
             >
@@ -157,57 +186,19 @@ export default function Contact() {
             </span>
           </div>
 
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 12,
-            }}
-          >
-            <MapPin size={20} style={{ color: 'var(--color-golden-oak)', flexShrink: 0 }} />
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <MapPin size={18} style={{ color: 'var(--color-golden-oak)', flexShrink: 0 }} />
             <span
               style={{
                 fontFamily: 'var(--font-body)',
-                fontSize: 'clamp(0.875rem, 1vw, 1rem)',
-                fontWeight: 400,
+                fontSize: '0.9rem',
                 color: 'var(--color-dark-void)',
               }}
             >
-              Rua Luciana de Abreu, 471<br/>
-              Moinhos de Vento — Porto Alegre/RS
+              Rua Luciana de Abreu 471, Sala 307 — Moinhos de Vento, Porto Alegre/RS
             </span>
           </div>
         </div>
-
-        {/* CTA Button */}
-        <a
-          href="https://wa.me/5551999223888"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            display: 'inline-block',
-            backgroundColor: 'var(--color-golden-oak)',
-            color: 'var(--color-warm-cream)',
-            padding: '16px 40px',
-            borderRadius: 2,
-            fontFamily: 'var(--font-body)',
-            fontSize: '0.875rem',
-            fontWeight: 500,
-            letterSpacing: '0.04em',
-            textTransform: 'uppercase',
-            textDecoration: 'none',
-            marginTop: 48,
-            transition: 'background-color 0.3s ease',
-          }}
-          onMouseEnter={(e) => {
-            (e.target as HTMLElement).style.backgroundColor = 'var(--color-dark-void)';
-          }}
-          onMouseLeave={(e) => {
-            (e.target as HTMLElement).style.backgroundColor = 'var(--color-golden-oak)';
-          }}
-        >
-          Agendar uma consulta
-        </a>
       </div>
     </section>
   );

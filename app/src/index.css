@@ -196,6 +196,19 @@
   transform: translateY(0);
 }
 
+/* Mobile menu */
+@media (max-width: 1024px) {
+  .nav-desktop {
+    display: none !important;
+  }
+
+  .mobile-menu-btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 /* Mobile morph text fix */
 @media (max-width: 768px) {
   .morph-text {

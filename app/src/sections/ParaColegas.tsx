@@ -5,38 +5,37 @@ import { BookOpen, Users, GraduationCap, MessageCircle } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const highlights = [
+const topics = [
   {
-    icon: <Users size={24} />,
+    icon: <Users size={22} />,
     title: 'Para quem é',
     text: 'Estudantes de psicologia em formação, psicólogos recém-formados e profissionais experientes que buscam aprimorar seu exercício clínico.',
   },
   {
-    icon: <GraduationCap size={24} />,
+    icon: <BookOpen size={22} />,
     title: 'Conteúdo',
     text: 'Discussão de casos clínicos, fundamentação teórica em psicanálise, ética profissional e desenvolvimento da escuta analítica.',
   },
   {
-    icon: <BookOpen size={24} />,
+    icon: <GraduationCap size={22} />,
     title: 'Formato',
     text: 'Encontros individuais ou em grupo, com frequência e duração combinadas conforme a necessidade de cada supervisão.',
   },
   {
-    icon: <MessageCircle size={24} />,
+    icon: <MessageCircle size={22} />,
     title: 'Abordagem',
     text: 'Pautada na tradição psicanalítica freudiana e em contribuições contemporâneas, respeitando a singularidade de cada trajetória.',
   },
 ];
 
-export default function Supervision() {
+export default function ParaColegas() {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
 
-    const elements = section.querySelectorAll('.sup-animate');
-
+    const elements = section.querySelectorAll('.pc-animate');
     gsap.fromTo(
       elements,
       { y: 40, opacity: 0 },
@@ -64,10 +63,10 @@ export default function Supervision() {
   return (
     <section
       ref={sectionRef}
-      id="supervisao"
+      id="para-colegas"
       style={{
         width: '100%',
-        backgroundColor: 'var(--color-warm-cream)',
+        backgroundColor: 'var(--color-pale-sand)',
         padding: 'clamp(80px, 12vh, 160px) clamp(24px, 5vw, 80px)',
       }}
     >
@@ -81,8 +80,8 @@ export default function Supervision() {
           alignItems: 'center',
         }}
       >
-        {/* Left Column - Image */}
-        <div className="sup-animate">
+        {/* Left — Image */}
+        <div className="pc-animate">
           <div style={{ borderRadius: 4, overflow: 'hidden' }}>
             <img
               src="/images/supervision.jpg"
@@ -98,11 +97,10 @@ export default function Supervision() {
           </div>
         </div>
 
-        {/* Right Column - Content */}
+        {/* Right — Content */}
         <div>
-          {/* Section Label */}
           <p
-            className="sup-animate"
+            className="pc-animate"
             style={{
               fontFamily: 'var(--font-body)',
               fontSize: 'clamp(0.75rem, 1.2vw, 1rem)',
@@ -114,12 +112,11 @@ export default function Supervision() {
               marginBottom: 24,
             }}
           >
-            SUPERVISÃO
+            PARA COLEGAS
           </p>
 
-          {/* Title */}
           <h2
-            className="sup-animate"
+            className="pc-animate"
             style={{
               fontFamily: 'var(--font-display)',
               fontSize: 'clamp(1.75rem, 4vw, 3rem)',
@@ -133,16 +130,15 @@ export default function Supervision() {
             Supervisão para prática clínica
           </h2>
 
-          {/* Description */}
           <p
-            className="sup-animate"
+            className="pc-animate"
             style={{
               fontFamily: 'var(--font-body)',
               fontSize: 'clamp(0.875rem, 1vw, 1rem)',
               fontWeight: 400,
               lineHeight: 1.7,
               color: 'var(--color-earth-clay)',
-              marginBottom: 40,
+              marginBottom: 36,
             }}
           >
             Ofereço supervisão clínica para estudantes e profissionais da área da psicologia,
@@ -151,31 +147,26 @@ export default function Supervision() {
             à singularidade de cada trajetória profissional.
           </p>
 
-          {/* Highlight Cards */}
+          {/* Topics */}
           <div
-            className="sup-animate"
+            className="pc-animate"
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(2, 1fr)',
-              gap: 24,
+              gap: 20,
             }}
           >
-            {highlights.map((item, index) => (
+            {topics.map((item, i) => (
               <div
-                key={index}
+                key={i}
                 style={{
-                  padding: '24px 20px',
+                  padding: '20px 16px',
                   borderRadius: 4,
                   border: '1px solid rgba(184, 149, 106, 0.25)',
                   backgroundColor: 'rgba(184, 149, 106, 0.04)',
                 }}
               >
-                <div
-                  style={{
-                    color: 'var(--color-golden-oak)',
-                    marginBottom: 10,
-                  }}
-                >
+                <div style={{ color: 'var(--color-golden-oak)', marginBottom: 8 }}>
                   {item.icon}
                 </div>
                 <p
@@ -185,7 +176,7 @@ export default function Supervision() {
                     fontWeight: 500,
                     letterSpacing: '0.04em',
                     color: 'var(--color-dark-void)',
-                    marginBottom: 6,
+                    marginBottom: 4,
                   }}
                 >
                   {item.title}
@@ -193,7 +184,7 @@ export default function Supervision() {
                 <p
                   style={{
                     fontFamily: 'var(--font-body)',
-                    fontSize: '0.8rem',
+                    fontSize: '0.75rem',
                     fontWeight: 400,
                     lineHeight: 1.6,
                     color: 'var(--color-earth-clay)',
@@ -203,38 +194,6 @@ export default function Supervision() {
                 </p>
               </div>
             ))}
-          </div>
-
-          {/* CTA */}
-          <div
-            className="sup-animate"
-            style={{ marginTop: 36 }}
-          >
-            <a
-              href="#contato"
-              style={{
-                display: 'inline-block',
-                backgroundColor: 'var(--color-golden-oak)',
-                color: 'var(--color-warm-cream)',
-                padding: '14px 36px',
-                borderRadius: 2,
-                fontFamily: 'var(--font-body)',
-                fontSize: '0.8rem',
-                fontWeight: 500,
-                letterSpacing: '0.04em',
-                textTransform: 'uppercase',
-                textDecoration: 'none',
-                transition: 'background-color 0.3s ease',
-              }}
-              onMouseEnter={(e) => {
-                (e.target as HTMLElement).style.backgroundColor = 'var(--color-dark-void)';
-              }}
-              onMouseLeave={(e) => {
-                (e.target as HTMLElement).style.backgroundColor = 'var(--color-golden-oak)';
-              }}
-            >
-              Entre em contato
-            </a>
           </div>
         </div>
       </div>

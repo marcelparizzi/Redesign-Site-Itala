@@ -7,11 +7,10 @@ interface NavigationProps {
 }
 
 const navLinks = [
-  { label: 'Abordagem', target: '#abordagem' },
-  { label: 'Indicações', target: '#indicacoes' },
-  { label: 'Como Funciona', target: '#como-funciona' },
+  { label: 'Para Você', target: '#para-voce' },
+  { label: 'Para Sua Família', target: '#para-sua-familia' },
+  { label: 'Para Colegas', target: '#para-colegas' },
   { label: 'A Profissional', target: '#profissional' },
-  { label: 'Supervisão', target: '#supervisao' },
   { label: 'Contato', target: '#contato' },
 ];
 

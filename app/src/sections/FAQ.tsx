@@ -76,7 +76,7 @@ function FAQItem({ question, answer, isOpen, onClick }: {
             fontFamily: 'var(--font-display)',
             fontSize: 'clamp(1rem, 1.5vw, 1.15rem)',
             fontWeight: 400,
-            color: 'var(--color-warm-cream)',
+            color: 'var(--color-dark-void)',
             paddingRight: 16,
           }}
         >
@@ -107,7 +107,7 @@ function FAQItem({ question, answer, isOpen, onClick }: {
             fontSize: 'clamp(0.875rem, 1vw, 1rem)',
             fontWeight: 400,
             lineHeight: 1.65,
-            color: 'rgba(245, 240, 230, 0.75)',
+            color: 'var(--color-warm-stone)',
             paddingTop: 12,
             paddingRight: 32,
           }}
@@ -159,7 +159,7 @@ export default function FAQ() {
       id="faq"
       style={{
         width: '100%',
-        backgroundColor: 'var(--color-deep-umber)',
+        backgroundColor: 'var(--color-warm-cream)',
         padding: 'clamp(80px, 12vh, 160px) clamp(24px, 5vw, 80px)',
       }}
     >
@@ -190,7 +190,7 @@ export default function FAQ() {
               fontSize: 'clamp(1.75rem, 4vw, 3rem)',
               fontWeight: 400,
               lineHeight: 1.2,
-              color: 'var(--color-warm-cream)',
+              color: 'var(--color-deep-umber)',
             }}
           >
             Tire suas dúvidas
@@ -216,9 +216,9 @@ export default function FAQ() {
             textAlign: 'center',
             marginTop: 48,
             padding: '32px',
-            backgroundColor: 'rgba(245, 240, 230, 0.04)',
+            backgroundColor: 'rgba(62, 39, 35, 0.04)',
             borderRadius: 4,
-            border: '1px solid rgba(184, 149, 106, 0.15)',
+            border: '1px solid rgba(184, 149, 106, 0.2)',
           }}
         >
           <p
@@ -226,7 +226,7 @@ export default function FAQ() {
               fontFamily: 'var(--font-display)',
               fontSize: 'clamp(1.1rem, 2vw, 1.3rem)',
               fontWeight: 400,
-              color: 'var(--color-warm-cream)',
+              color: 'var(--color-deep-umber)',
               marginBottom: 8,
             }}
           >
@@ -236,7 +236,7 @@ export default function FAQ() {
             style={{
               fontFamily: 'var(--font-body)',
               fontSize: 'clamp(0.875rem, 1vw, 1rem)',
-              color: 'rgba(245, 240, 230, 0.7)',
+              color: 'var(--color-warm-stone)',
               marginBottom: 20,
             }}
           >

@@ -1,4 +1,5 @@
 import { useLenis } from './hooks/useLenis';
+import { Analytics } from '@vercel/analytics/react';
 import Navigation from './sections/Navigation';
 import Hero from './sections/Hero';
 import ParaVoce from './sections/ParaVoce';
@@ -28,6 +29,7 @@ function App() {
       <Contact />
       <Footer />
       <FloatingCTA />
+      <Analytics />
     </>
   );
 }

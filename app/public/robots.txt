@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /private
+Disallow: /cgi-bin/
 
 Sitemap: https://italachinazzo.com.br/sitemap.xml

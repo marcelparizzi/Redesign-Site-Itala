@@ -104,7 +104,7 @@ export default function ParaColegas() {
             style={{
               fontFamily: 'var(--font-body)',
               fontSize: 'clamp(0.75rem, 1.2vw, 1rem)',
-              fontWeight: 500,
+              fontWeight: 800,
               letterSpacing: '0.08em',
               color: 'var(--color-golden-oak)',
               textTransform: 'uppercase',

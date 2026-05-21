@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { MessageCircle } from 'lucide-react';
+import { WHATSAPP_URL } from '../config/whatsapp';
 
 export default function FloatingCTA() {
   const [visible, setVisible] = useState(false);
@@ -16,7 +17,7 @@ export default function FloatingCTA() {
 
   return (
     <a
-      href="https://wa.me/5551999223888"
+      href={WHATSAPP_URL}
       target="_blank"
       rel="noopener noreferrer"
       className="floating-cta"
@@ -28,11 +29,11 @@ export default function FloatingCTA() {
         width: 56,
         height: 56,
         borderRadius: '50%',
-        backgroundColor: '#25D366',
+        backgroundColor: '#B8956A',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        boxShadow: '0 4px 20px rgba(37, 211, 102, 0.4)',
+        boxShadow: '0 4px 20px rgba(211, 147, 37, 0.43)',
         opacity: visible ? 1 : 0,
         transform: visible ? 'scale(1)' : 'scale(0.8)',
         transition: 'opacity 0.3s ease, transform 0.3s ease',

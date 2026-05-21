@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ChevronDown } from 'lucide-react';
+import { WHATSAPP_URL } from '../config/whatsapp';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -243,7 +244,7 @@ export default function FAQ() {
             Vamos conversar. O primeiro passo é sempre o mais importante.
           </p>
           <a
-            href="https://wa.me/5551999223888"
+            href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
             style={{

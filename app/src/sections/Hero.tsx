@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { WHATSAPP_URL } from '../config/whatsapp';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -222,7 +223,7 @@ export default function Hero() {
 
         {/* CTA: Agendar consulta — compacto */}
         <a
-          href="https://wa.me/5551999223888"
+          href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
           style={{

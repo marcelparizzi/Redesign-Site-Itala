@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Phone, Mail, MapPin, MessageCircle } from 'lucide-react';
+import { WHATSAPP_URL } from '../config/whatsapp';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -108,7 +109,7 @@ export default function Contact() {
         {/* Primary CTA — WhatsApp */}
         <div style={{ marginTop: 40 }}>
           <a
-            href="https://wa.me/5551999223888"
+            href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
             style={{

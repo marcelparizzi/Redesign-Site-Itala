@@ -199,7 +199,7 @@ export default function About() {
                   color: 'rgba(245, 240, 230, 0.85)',
                 }}
               >
-                Atuo com psicoterapia psicanalítica individual para crianças, adolescentes e adultos, oferecendo um espaço de escuta qualificada, pautado na tradição freudiana e nas contribuições contemporâneas da psicanálise. Meu trabalho é orientado pelo compromisso ético e pelo respeito à singularidade de cada sujeito.
+                Atuo com psicoterapia psicanalítica individual para crianças, adolescentes e adultos, oferecendo um espaço de escuta qualificada, pautado nas contribuições contemporâneas da psicanálise. Meu trabalho é orientado pelo compromisso ético e pelo respeito à singularidade de cada sujeito.
               </p>
             </div>
 

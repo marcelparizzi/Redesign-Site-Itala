@@ -142,7 +142,7 @@ export default function ParaVoce() {
             }}
           >
             Atendo adolescentes e adultos em psicoterapia psicanalítica individual.
-            O trabalho é pautado na tradição freudiana e nas contribuições contemporâneas,
+            O trabalho é pautado nas contribuições contemporâneas,
             com escuta qualificada e respeito à singularidade de cada sujeito.
           </p>
 

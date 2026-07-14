@@ -24,7 +24,7 @@ const topics = [
   {
     icon: <MessageCircle size={22} />,
     title: 'Abordagem',
-    text: 'Pautada na tradição psicanalítica freudiana e em contribuições contemporâneas, respeitando a singularidade de cada trajetória.',
+    text: 'Pautada em contribuições contemporâneas, respeitando a singularidade de cada trajetória.',
   },
 ];
 
